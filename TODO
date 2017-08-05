@@ -4,3 +4,9 @@ TODO
 - Auto calibration mode
 - Compile as library
 - Add audio gain control 
+
+#TO DO: Suggest brute-force step-and-check tuning (reuse ram buffer data)
+# as peak detection will not work well alone. Thus, we must scan each band 
+# tuning region with +- 0.002MHz for best SNR stats.
+# If we maximize valid packet counts, than the off-peak-center packet data should be better.
+#

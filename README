@@ -57,22 +57,13 @@ Change to the source dir
 then type 
     make
 
-Test running
-    ./rtl_ais
-
-For compiling a MS Windows executable you will need a working MSYS/MinGW environment.
-Edit the Makefile, and modify these lines:
-
-#### point this to your correct path ###
-RTLSDR_PATH="/c/tmp/rtl-sdr/"
-RTLSDR_LIB=$(RTLSDR_PATH)/build/src/
-########################################
+Test running on E4000 rtl SDR:
+    ./run_rtl_ais_deb_test.sh
+ 
 -------  
 INSTALL
 -------
-On Linux, copy the rtl_ais file to a binary path, i.e.  /usr/bin, or /usr/local/bin. 
-On Windows, put the librtlsdr.dll and libusb-1.0.dll files in the same directory
-with rtl_ais.exe. You'll need the zadig driver installed too.
+On Linux, copy the rtl_ais file to a binary path, i.e.  /usr/bin, or /usr/local/bin.  
 
 ------------
 KNOWN ISSUES
@@ -85,12 +76,5 @@ figure is different for each device, it's very important to know  this value and
 Some instructions for get the ppm error are here:
 
 http://www.rtl-sdr.com/how-to-calibrate-rtl-sdr-using-kalibrate-rtl-on-linux
-
-and here (using SDR#):
-
-http://www.atouk.com/SDRSharpQuickStart.html#adjusting
-
-and here (using HDSDR ad AIS traffic)
-
-http://www.cruisersforum.com/forums/f134/new-rtlsdr-plugin-102929-11.html#post1844966
+ 
 
