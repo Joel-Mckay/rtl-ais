@@ -66,6 +66,24 @@ then
 	exit 0 
 fi
 
+
+#check if rtl_ais available
+rtlprg=$currdir"/rtl_ais"
+if [ ! -f  $rtlprg ]
+then
+	echo "====================================================================="
+	echo "Building rtl_ais "
+	make
+	
+	if [ ! -f  $rtlprg ]
+	then
+		echo "====================================================================="
+		echo "Eroor: unable to find ./rtl_ais ..."
+		exit 0 
+	fi
+fi
+
+
 #check if station list is older than 5 hours
 isOldClockStat=$( find $xtalFile  -mmin +300 ) 
 if [ ! "$isOldClockStat" = "" ]
@@ -149,19 +167,19 @@ aisBHZ="162.02518M"
 
 #------------------------------- AGC is not very effective with SNR
 #ships tracked 3  (3km)
-#./rtl_ais  -R on -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S5
+#$rtlprg  -R on -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S5
 #------------------------------- 
 
 #RTL E4000 lower gain amp seems to get better SNR fo rmore valid packets
 #-------------------------------
 #ships tracked 5 (10km) BEST data/range 
-./rtl_ais  -g 34 -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S10
+$rtlprg  -g 34 -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S10
 #-------------------------------
 # ships tracked 5  (10km) Does find weaker signals, but gets more packet errors with bad SNR
-#./rtl_ais  -g 42 -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S5
+#$rtlprg  -g 42 -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S5
 #-------------------------------
 #ships tracked 4 (3km) range is low, but SNR is very good
-#./rtl_ais  -g 24 -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S5
+#$rtlprg  -g 24 -l $aisAHZ -r $aisBHZ  -s 24k -o 48k -p $ppmOffset  -n -S5
 #-------------------------------
 
  
